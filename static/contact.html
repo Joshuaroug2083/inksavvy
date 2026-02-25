@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contact - INKSAVVY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="Contact INKSAVVY for writing-first branding and digital systems.">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="index.html">INKSAVVY</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div id="primary-nav" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <div class="nav-item has-dropdown">
+            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="services-menu">Services</button>
+            <div id="services-menu" class="dropdown">
+              <a href="services.html#writing">Writing and Strategy</a>
+              <a href="services.html#branding">Brand Identity</a>
+              <a href="services.html#digital">Digital Products</a>
+              <a href="services.html#growth">Growth and Positioning</a>
+            </div>
+          </div>
+          <a href="work.html">Work</a>
+          <a href="pricing.html">Packages</a>
+          <a href="resources.html">Resources</a>
+          <a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="portal.html">Client Portal</a>
+            <a class="btn btn-primary" href="contact.html#contact-form">Get a Quote</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">Contact</div>
+          <h1 class="hero-title">Start a project or book a strategy call.</h1>
+          <p class="hero-sub">Tell us what you are building and we will send a tailored proposal within 48 hours.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact-form">Send Request</a>
+            <a class="btn btn-ghost" href="#book-call">Book Strategy Call</a>
+          </div>
+        </div>
+        <div class="split-card">
+          <h3>Direct contact</h3>
+          <p>hello@inksavvy.example</p>
+          <p>+1 (000) 000-0000</p>
+          <p>Office hours: Mon-Fri, 9am-6pm</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact-form" class="container section">
+      <div class="section-header">
+        <div class="eyebrow">Project intake</div>
+        <h2 class="section-title">Tell us about your project.</h2>
+        <p class="section-sub">This is a static prototype. Form submissions are not live yet.</p>
+      </div>
+      <form class="form">
+        <div class="form-row">
+          <input type="text" placeholder="Full name" aria-label="Full name">
+          <input type="email" placeholder="Email address" aria-label="Email address">
+        </div>
+        <div class="form-row">
+          <input type="text" placeholder="Company" aria-label="Company">
+          <input type="text" placeholder="Phone" aria-label="Phone">
+        </div>
+        <div class="form-row">
+          <select aria-label="Project type">
+            <option>Project type</option>
+            <option>Brand strategy</option>
+            <option>Business writing</option>
+            <option>Digital product</option>
+            <option>Growth and positioning</option>
+          </select>
+          <select aria-label="Budget range">
+            <option>Budget range</option>
+            <option>$2k-$5k</option>
+            <option>$5k-$15k</option>
+            <option>$15k-$50k</option>
+            <option>$50k+</option>
+          </select>
+        </div>
+        <textarea placeholder="Tell us about your goals, timeline, and requirements" aria-label="Project brief"></textarea>
+        <button class="btn btn-primary" type="button" onclick="alert('Form disabled in prototype')">Send Request</button>
+      </form>
+    </section>
+
+    <section id="book-call" class="container section">
+      <div class="section-header">
+        <div class="eyebrow">Book a call</div>
+        <h2 class="section-title">Prefer to talk?</h2>
+        <p class="section-sub">We can schedule a strategy call and walk through scope, timelines, and delivery.</p>
+      </div>
+      <div class="split-card">
+        <p>Calendar integration will live here in the full build.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>INKSAVVY</strong>
+        <p>Writing-first branding and digital systems.</p>
+      </div>
+      <div>
+        <strong>Office</strong>
+        <p>By appointment</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <p>support@inksavvy.example</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/site.js"></script>
+  <script src="./js/reveal.js"></script>
+</body>
+</html>

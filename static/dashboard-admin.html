@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Admin Dashboard - INKSAVVY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="INKSAVVY admin dashboard.">
+</head>
+<body class="page" data-dashboard="admin">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="index.html">INKSAVVY</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div id="primary-nav" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="portal.html">Client Portal</a>
+          <a href="auth.html#login">Auth</a>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="dashboard-staff.html">Staff View</a>
+            <a class="btn btn-primary" href="dashboard-client.html">Client View</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-tight">
+      <div class="eyebrow">Admin dashboard</div>
+      <h1 class="section-title">Staff approvals and operations.</h1>
+      <p class="section-sub">Review staff applications, issue Employment IDs, and track communication.</p>
+    </section>
+
+    <div class="dashboard">
+      <aside class="sidebar">
+        <h4>Admin</h4>
+        <a class="active" href="#overview">Overview</a>
+        <a href="#applications">Applications</a>
+        <a href="#assignments">Assignments</a>
+        <a href="#staff">Staff Directory</a>
+        <a href="#emails">Email Log</a>
+      </aside>
+
+      <div class="dashboard-main">
+        <section id="overview" class="section-tight">
+          <div class="stats">
+            <div class="stat-card">
+              <strong id="admin-stat-pending">0</strong>
+              <span>Pending applications</span>
+            </div>
+            <div class="stat-card">
+              <strong id="admin-stat-approved">0</strong>
+              <span>Approved staff</span>
+            </div>
+            <div class="stat-card">
+              <strong id="admin-stat-emails">0</strong>
+              <span>Emails sent</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="applications" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Applications</div>
+            <h2 class="section-title">Staff applications</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Portfolio</th>
+                  <th>Status</th>
+                  <th>Employment ID</th>
+                  <th>Temp Password</th>
+                  <th>Submitted</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-application-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="assignments" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Assignments</div>
+            <h2 class="section-title">Assign staff to projects</h2>
+            <form id="admin-assignment-form" class="form">
+              <div class="form-row">
+                <input id="admin-assignment-project" type="text" placeholder="Project name" aria-label="Project name">
+                <input id="admin-assignment-role" type="text" placeholder="Role (Brand Strategist)" aria-label="Role">
+              </div>
+              <div class="form-row">
+                <select id="admin-assignment-staff" aria-label="Select staff"></select>
+                <input id="admin-assignment-due" type="date" aria-label="Due date">
+              </div>
+              <button class="btn btn-primary" type="submit">Assign staff</button>
+            </form>
+            <div style="margin-top:16px">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Project</th>
+                    <th>Staff</th>
+                    <th>Role</th>
+                    <th>Due</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-assignment-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="staff" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Staff directory</div>
+            <h2 class="section-title">Active staff</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Employment ID</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="admin-staff-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="emails" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Email log</div>
+            <h2 class="section-title">Communication history</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>To</th>
+                  <th>Subject</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="admin-email-body"></tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>INKSAVVY</strong>
+        <p>Admin operations dashboard.</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <p>support@inksavvy.example</p>
+      </div>
+      <div>
+        <strong>Security</strong>
+        <p>Audit logs enabled in full build.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/site.js"></script>
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>

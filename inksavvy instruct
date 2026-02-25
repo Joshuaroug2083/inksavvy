@@ -1,0 +1,683 @@
+You are a senior full-stack engineer and product designer tasked with designing and developing a fully functioning, production-ready website for a writing and branding agency named INKSAVVY.
+
+This is not a template site. It must feel premium, minimalist, trustworthy, and modern, inspired by Apple’s design philosophy: clarity, restraint, depth, motion, and purpose.
+
+1. BRAND IDENTITY & DESIGN DIRECTION
+Brand Name
+
+INKSAVVY
+
+Brand Positioning
+
+INKSAVVY is a writing-first branding and tech-enabled agency that:
+
+Combines writing, strategy, and branding into a single cohesive system
+
+Works with businesses, startups, thought leaders, and struggling brands
+
+Extends beyond visuals into digital presence, websites, and mobile applications
+
+Focuses on clarity, credibility, and long-term brand growth
+
+Core Brand Values
+
+Trust
+
+Precision
+
+Intelligence
+
+Simplicity
+
+Depth
+
+Technical competence
+
+2. VISUAL DESIGN SYSTEM
+Color Palette
+
+Primary: Black (#000000)
+
+Secondary: White (#FFFFFF)
+
+Neutral: Gray scale (light gray to charcoal)
+
+Accent: Bright Green (used sparingly for CTAs, highlights, progress indicators)
+
+Accent green must feel intentional, not decorative.
+
+Typography
+
+Use clean, modern, sans-serif fonts
+
+Apple-inspired typography hierarchy
+
+Fonts must communicate trust, clarity, and professionalism
+
+Proper spacing, line-height, and visual rhythm
+
+Design Style
+
+Minimalist
+
+Sharp edges with subtle softness
+
+Clean grid system
+
+High white space
+
+Smooth micro-interactions
+
+No clutter
+
+Premium feel
+
+3. SITE ARCHITECTURE & NAVIGATION
+Global Navigation (Sticky Header)
+
+Home
+
+About
+
+Services (Dropdown on hover)
+
+Solutions / Technology
+
+Client Portal (Login)
+
+Careers (Staff Signup)
+
+Contact
+
+Navigation must:
+
+Be lightweight
+
+Animate subtly on hover
+
+Collapse elegantly on mobile
+
+4. PAGE & SECTION BREAKDOWN
+HOME (Landing Page)
+
+Purpose: Instant trust + clarity + authority
+
+Sections:
+
+Hero Section
+
+Strong value proposition headline
+
+Subtext explaining writing-led branding
+
+Primary CTA: “Work With Us”
+
+Secondary CTA: “Explore Services”
+
+Minimal background visuals or abstract imagery
+
+What We Do
+
+Writing
+
+Branding
+
+Digital Presence
+
+Technology Enablement
+
+Our Philosophy
+
+Writing as the foundation of branding
+
+Strategy before visuals
+
+Systems over aesthetics
+
+Scroll-Triggered Displays
+
+Text fade-ins
+
+Section reveals
+
+Line animations
+
+Subtle parallax (no overuse)
+
+Trust Indicators
+
+Client types (startups, founders, SMEs)
+
+Process transparency
+
+Security & confidentiality emphasis
+
+ABOUT PAGE
+
+Purpose: Credibility and depth
+
+Content:
+
+Who Inksavvy is
+
+Why writing-first branding matters
+
+How Inksavvy differs from typical agencies
+
+Long-term brand building mindset
+
+Tone: calm, intelligent, authoritative
+
+SERVICES (Dropdown Menu)
+
+Dropdown appears on hover and includes:
+
+Writing & Strategy
+
+Brand Messaging
+
+Business Writing
+
+Content Strategy
+
+Thought Leadership Writing
+
+Academic & Professional Writing
+
+Assignments
+
+Thesis
+
+Dissertation
+
+SIWES Technical Reports
+
+Presentation Slides
+
+Branding
+
+Brand Identity
+
+Brand Strategy
+
+Brand Positioning
+
+Visual Systems
+
+Digital & Tech
+
+Website Design & Development
+
+Mobile Application Development
+
+Online Media Presence Strategy
+
+Brand-Driven Digital Systems
+
+Each service page should:
+
+Be minimal
+
+Explain value, not features
+
+Have a CTA to book a consultation
+
+5. CLIENT PORTAL (SECURE)
+Client Registration & Login
+
+End-to-end encrypted authentication
+
+Secure dashboard access
+
+Email verification
+
+Password hashing
+
+Client Dashboard Features
+
+Book appointment with brand strategist
+
+Upload branding documents and briefs
+
+Fill structured branding questionnaires
+
+View project status
+
+Secure messaging (optional)
+
+UI must be:
+
+Clean
+
+Minimal
+
+Professional
+
+Intuitive
+
+6. STAFF / BRAND STRATEGIST PORTAL
+Staff Signup Page
+
+Registration requires a Unique Employment ID
+
+ID validates staff eligibility
+
+Work-from-home model
+
+Staff Dashboard
+
+View assigned projects
+
+Upload deliverables
+
+Communicate with admin
+
+Profile management
+
+Mandatory Terms & Conditions
+
+Display before signup
+
+Must require agreement checkbox
+
+Include:
+
+Confidentiality
+
+Non-disclosure
+
+Remote work expectations
+
+Intellectual property ownership
+
+Professional conduct
+
+Termination clauses
+
+7. TERMS & CONDITIONS (WORKERS)
+
+Generate a clear, professional, legally-aware Terms & Conditions document specifically for:
+
+Remote brand strategists
+
+Writers
+
+Designers
+
+Developers
+
+Tone:
+
+Firm
+
+Clear
+
+Professional
+
+Non-exploitative
+
+8. MEDIA & IMAGERY
+
+Use clean, abstract, brand-consistent imagery
+
+No stock-photo clichés
+
+Images must feel:
+
+Calm
+
+Intelligent
+
+Modern
+
+Purpose-driven
+
+9. INTERACTIONS & MOTION
+
+Scroll-based animations
+
+Fade-ins
+
+Subtle transitions
+
+Hover effects
+
+Motion must enhance clarity, not distract
+
+10. TECHNICAL REQUIREMENTS
+
+Fully responsive (mobile, tablet, desktop)
+
+SEO-ready
+
+Performance optimized
+
+Secure authentication
+
+Scalable architecture
+
+Clean, modular codebase
+
+Accessibility best practices
+
+11. FINAL EXPECTATION
+
+Deliver a fully functioning, modern, minimalist, trust-driven website that:
+
+Feels premium and Apple-inspired
+
+Positions Inksavvy as a serious branding and tech agency
+
+Integrates writing, branding, and technology seamlessly
+
+Supports secure client and staff workflows
+
+Is ready for real-world deployment
+build a fully functioning, production-ready website for INKSAVVY — a writing & branding agency that combines writing with branding to help businesses, startups, thought leaders and struggling businesses. The site should be minimalist, Apple-like in feel, and use a black/gray/white palette with a bright green accent.
+
+High-level goals
+
+Minimalist, modern design inspired by Apple: generous whitespace, precise typography, crisp cards, and subtle motion.
+
+Clear trust-building layout and copy so visitors convert to clients or staff applicants.
+
+Fully functional client portal (register/login) where clients can book appointments, upload assets, share briefs, and track project progress.
+
+Staff (brand strategist) onboarding/registration portal with unique employment ID, authentication, acceptance of Terms & Conditions, and remote working tools.
+
+Secure data handling: HTTPS, encryption at rest, and recommended approach for end-to-end encrypted client assets.
+
+Responsive and accessible across devices, performant (Lighthouse scores target ≥90), and SEO-friendly.
+
+Clean, consistent imagery and assets that follow brand styling.
+
+Brand & Visual System
+
+Primary palette:
+
+Black: #000000
+
+Neutral dark gray (UI backgrounds, text): #1B1B1B
+
+Mid gray (borders, subtle text): #6B6B6B
+
+Light gray (cards, surfaces): #F4F4F4
+
+White: #FFFFFF
+
+Bright green accent: #00C853 (use sparingly for CTAs, links, focus states)
+
+Typography (system-first stack):
+
+Primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif
+
+Headings: Inter or system UI variable font (prefer variable weights)
+
+Size scale: large generous headings (H1 ~44–56px desktop), comfortable body copy (16–18px).
+
+Imagery: monochrome portraits/scene images with isolated bright-green accents (e.g., a green prop, highlight overlay). Use high-quality editorial stock (Unsplash, Pexels) and process images to grayscale with a subtle green accent overlay or selective color pop.
+
+Iconography: simple line icons (Lucide or Feather). Use rounded 2xl radii for cards and controls.
+
+Motion: subtle fade/translate on scroll, gentle parallax for hero background, micro-interactions for buttons and forms. Use Framer Motion or CSS @keyframes for small effects.
+
+Information Architecture & Pages
+
+Top navigation (desktop): Logo | Home | About | Services ▾ | Work | Pricing | Blog | Careers | Client Portal (Login/Register) | Contact
+
+Services dropdown: (hover reveals grouped list)
+
+Brand Strategy
+
+Copywriting & Tone of Voice
+
+Content Strategy & Calendars
+
+Social Media Management
+
+Visual Identity & Logo
+
+UX/UI Design
+
+Website Development
+
+Mobile App Development
+
+SEO & Technical Content
+
+Technical Writing & Documentation
+
+Workshops & Training
+
+Ongoing Brand Management
+
+Core pages:
+
+Home (landing): hero, trust signals (logos/testimonials), overview of services, core process, featured case studies, CTA (Get a Quote / Client Portal)
+
+About: mission, team, process, values (focus on writing+branding fusion)
+
+Services (detail page per service)
+
+Work / Portfolio: case studies; filter by industry
+
+Pricing / Packages: tiered packages + custom
+
+Blog / Insights: CMS-driven articles (SSG or headless)
+
+Careers: staff application, staff sign-up portal (employment ID input)
+
+Client Portal: Register / Login -> Dashboard
+
+Dashboard (clients): Projects, Book Appointment, Upload Assets, Secure Messaging, Contracts, Invoices, Delivery Files
+
+Staff Dashboard: Assigned Projects, Accept/Decline, Submissions, Timesheets, Messages
+
+Admin Panel: Manage users, projects, invoices, staff, content
+
+Terms & Privacy pages
+
+Functional Requirements (behavior)
+Authentication & Accounts
+
+Two user types: client and staff (and admin).
+
+Email + password signup + optional social login (Google/LinkedIn).
+
+Staff signup requires: full name, email, password, country, role, employment ID (system-generated or employer-provided), CV upload, short portfolio link, agree to Terms & Conditions.
+
+Employment ID format suggestion: INK-S-{YEAR}{4-digit-seq} (e.g., INK-S-2026-0042). Backend must ensure uniqueness.
+
+Email verification step required for activation.
+
+Password policies and secure reset flows.
+
+Client Dashboard
+
+Create and manage projects.
+
+Book appointments (calendar integration: Calendly or built-in booking with available slots from staff schedules).
+
+Upload assets/files (images, docs). Files should be encrypted client-side for E2EE option — see Security.
+
+Secure messaging with attachments (optionally E2EE). Messages are threaded per project.
+
+Project milestones, deliverables, revision requests, and approvals.
+
+Notifications (email + in-app). Use SendGrid or similar.
+
+Billing & invoices: view and pay invoices (Stripe integration) — include webhooks for payment status.
+
+Staff Dashboard
+
+Accept assignments, set availability, see schedules, submit deliverables.
+
+Unique staff ID visible in profile.
+
+Timesheets and activity logs.
+
+Works remotely: allow file uploads and deliverable submissions.
+
+Admin
+
+CRUD for projects, users, staff, services, pricing, portfolios.
+
+Export CSV reports for clients, revenue, staff performance.
+
+Other features
+
+CMS for blog and case studies (allow non-technical content editors).
+
+Rich text editor for writing (Sanity/Strapi/Editor.js). CMS should support scheduling posts.
+
+SEO meta controls per page, sitemap.xml, robots.txt.
+
+Social preview images (Open Graph + Twitter Card).
+
+Accessibility (WCAG AA), keyboard navigation, alt text enforcement.
+
+Security & Encryption Guidance
+
+Always use TLS (HTTPS) for all traffic.
+
+Encrypt user passwords using bcrypt / Argon2.
+
+Encrypt sensitive files at rest using server-side encryption (AES-256) and store keys in a secrets manager.
+
+End-to-End Encryption option (recommended for client assets):
+
+Use Web Crypto API on the client to generate a symmetric key for each project. The client encrypts files before upload; server stores encrypted blobs.
+
+Private keys remain with the client (or shared with authorized staff via an encrypted key exchange). Store only encrypted keys server-side.
+
+Document tradeoffs: E2EE prevents server-side indexing/processing (e.g., no server-side previews or text extraction) unless users permit decryption.
+
+Protect API endpoints with proper authentication & authorization.
+
+Rate limiting, input validation, and OWASP Top 10 mitigations.
+
+Technical Stack (recommended)
+
+Frontend
+
+Framework: Next.js with TypeScript (supports SSR, SSG, incremental static regeneration)
+
+Styling: Tailwind CSS (utility-first) or Tailwind + CSS variables for brand tokens
+
+Animations: Framer Motion for polished micro-interactions; use react-intersection-observer for scroll reveals
+
+Forms: React Hook Form + Zod for validation
+
+Backend
+
+Django + Django REST Framework (DRF) with PostgreSQL
+
+Auth: Simple JWT or integrate with NextAuth for unified sessions
+
+Background jobs: Celery + Redis (for heavy tasks: image processing, emails)
+
+File storage: AWS S3 or DigitalOcean Spaces; serve via CDN
+
+Optional simpler stack: Node.js (NestJS/Express) + PostgreSQL if preferred. But keep front/back separation with REST or GraphQL.
+
+Other services
+
+Payments: Stripe
+
+Email: SendGrid or Mailgun
+
+Analytics: Plausible or Google Analytics (privacy-first choice recommended)
+
+Images: Cloudinary (auto image optimization)
+
+CI/CD: GitHub Actions; frontend deploy to Vercel; backend to Render or AWS Elastic Beanstalk / ECS
+
+Database schema (core tables / models)
+
+User {id, email, password_hash, role, name, verified, created_at, updated_at}
+
+StaffProfile {user_id(FK), employment_id, bio, skills[], availability, portfolio_url, cv_file, is_active}
+
+ClientProfile {user_id(FK), company_name, company_website, contact_number}
+
+Project {id, client_id, title, description, service_type, status, budget, start_date, end_date, encryption_meta}
+
+Booking {id, project_id, client_id, staff_id, start_time, end_time, status}
+
+Message {id, project_id, sender_id, content, attachments[], created_at}
+
+File {id, project_id, uploader_id, filename, s3_key, encrypted_boolean, mime_type, size}
+
+Invoice {id, project_id, amount, status, due_date, stripe_invoice_id}
+
+API endpoints (examples)
+
+POST /api/auth/register — body: {name,email,password,role}
+
+POST /api/auth/login — returns JWT and refresh token
+
+GET /api/user/me — returns profile
+
+POST /api/staff/register — staff signup with {employment_id, cv, portfolio} (validate employment ID uniqueness)
+
+POST /api/projects — create project
+
+GET /api/projects/:id — project details
+
+POST /api/projects/:id/files — upload encrypted file (accepts encrypted blob)
+
+POST /api/projects/:id/messages — send message
+
+POST /api/bookings — create booking
+
+POST /api/payments/checkout — create Stripe checkout session
+
+Include proper response codes and error payload format.
+
+UX & UI Component Inventory
+
+Header (transparent on hero, sticky after scroll)
+
+Hero: large headline, short subtext, primary CTA (Get a quote), secondary (Client Login)
+
+Service cards (hover reveal, minimal line icons)
+
+Process section (3–4 step timeline)
+
+Case study carousel / grid with filters
+
+Testimonials / logos strip
+
+Pricing cards with CTA
+
+Blog list & article page
+
+Careers form & staff registration flow
+
+Footer: contact, socials, newsletter subscribe, legal
+
+In-app components: Dashboard sidebar, project timeline, message thread, file gallery, booking modal
+
+Design & Implementation Notes
+
+Keep all CTAs in bright green. Secondary actions use mid-gray outlines.
+
+Maintain a strict grid and large margins to evoke an Apple-like feel.
+
+Use prefers-reduced-motion to disable animations for users who request it.
+
+Lazy-load images and code-split heavy bundles.
+
+Provide light/dark toggle if desired (default: light UI with dark text on white surfaces, but brand uses black background sections occasionally).
+
+QA, Testing & Launch Checklist
+
+Unit tests for backend models and core APIs.
+
+E2E tests for registration, login, booking, file upload, payment flows (Cypress).
+
+Accessibility audit (axe-core) and keyboard-only testing.
+
+Security scan (static analysis + dependency checks).
+
+Performance:

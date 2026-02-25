@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Client Dashboard - INKSAVVY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="INKSAVVY client dashboard.">
+</head>
+<body class="page" data-dashboard="client">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="index.html">INKSAVVY</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div id="primary-nav" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="portal.html">Client Portal</a>
+          <a href="contact.html#contact-form">Support</a>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="auth.html#login">Switch Account</a>
+            <a class="btn btn-primary" href="contact.html#contact-form">Start New Project</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-tight">
+      <div class="eyebrow">Client dashboard</div>
+      <h1 class="section-title">Welcome back, Client.</h1>
+      <p class="section-sub">Track projects, approvals, invoices, and deliverables in one place.</p>
+    </section>
+
+    <div class="dashboard">
+      <aside class="sidebar">
+        <h4>Workspace</h4>
+        <a class="active" href="#overview">Overview</a>
+        <a href="#projects">Projects</a>
+        <a href="#messages">Messages</a>
+        <a href="#questionnaires">Questionnaires</a>
+        <a href="#scheduler">Content Scheduler</a>
+        <a href="#staging">Staging Preview</a>
+        <a href="#knowledge">Knowledge Base</a>
+        <a href="#files">Files</a>
+        <a href="#contracts">Contracts</a>
+        <a href="#invoices">Invoices</a>
+        <a href="#appointments">Appointments</a>
+        <a href="#support">Support</a>
+      </aside>
+
+      <div class="dashboard-main">
+        <section id="overview" class="section-tight">
+          <div class="stats">
+            <div class="stat-card">
+              <strong>Project status</strong>
+              <span>Strategy and messaging phase</span>
+            </div>
+            <div class="stat-card">
+              <strong>Next milestone</strong>
+              <span>Brand narrative review - Mar 10</span>
+            </div>
+            <div class="stat-card">
+              <strong>Invoices due</strong>
+              <span>1 invoice pending</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Projects</div>
+            <h2 class="section-title">Active projects</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Status</th>
+                  <th>Next step</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-project-row="brand-audit">
+                  <td>Brand clarity audit</td>
+                  <td><span class="badge" data-project-status>In progress</span></td>
+                  <td>Approve messaging brief</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn btn-ghost btn-sm" type="button" data-project-action="approve">Approve</button>
+                      <button class="btn btn-ghost btn-sm" type="button" data-project-action="revision">Request revision</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr data-project-row="portal-build">
+                  <td>Website and portal build</td>
+                  <td><span class="badge" data-project-status>Scheduled</span></td>
+                  <td>Kickoff call</td>
+                  <td>
+                    <div class="table-actions">
+                      <button class="btn btn-ghost btn-sm" type="button" data-project-action="approve">Approve</button>
+                      <button class="btn btn-ghost btn-sm" type="button" data-project-action="revision">Request revision</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="messages" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Messages</div>
+            <h2 class="section-title">Secure message threads</h2>
+            <div id="client-message-feed" class="message-feed"></div>
+            <form id="client-message-form" class="form">
+              <div class="form-row">
+                <input id="client-message-sender" type="text" placeholder="Your name" aria-label="Your name">
+                <input id="client-message-project" type="text" placeholder="Project" aria-label="Project">
+              </div>
+              <textarea id="client-message-text" placeholder="Write a message" aria-label="Message"></textarea>
+              <button class="btn btn-primary" type="submit">Send message</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="questionnaires" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Questionnaires</div>
+            <h2 class="section-title">Structured brand intake</h2>
+            <p>Complete questionnaires to align on goals, tone, and positioning.</p>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Questionnaire</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-questionnaire-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="scheduler" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Content scheduler</div>
+            <h2 class="section-title">Plan posts and releases</h2>
+            <p>Schedule blog and social content linked to your project milestones.</p>
+            <form id="client-schedule-form" class="form">
+              <div class="form-row">
+                <input id="client-schedule-title" type="text" placeholder="Content title" aria-label="Content title">
+                <input id="client-schedule-date" type="date" aria-label="Schedule date">
+              </div>
+              <div class="form-row">
+                <input id="client-schedule-channel" type="text" placeholder="Channel (Blog, LinkedIn)" aria-label="Channel">
+                <input id="client-schedule-time" type="time" aria-label="Schedule time">
+              </div>
+              <button class="btn btn-ghost" type="submit">Add to schedule</button>
+            </form>
+            <ul id="client-schedule-list" class="list"></ul>
+          </div>
+        </section>
+
+        <section id="staging" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Staging</div>
+            <h2 class="section-title">Preview the build</h2>
+            <p>Access secure preview links and password-protected environments.</p>
+            <p id="client-staging-status" class="form-note">No preview link generated yet.</p>
+            <div class="hero-actions">
+              <button id="client-staging-generate" class="btn btn-ghost" type="button">Generate preview link</button>
+            </div>
+            <p id="client-staging-link" class="form-note"></p>
+          </div>
+        </section>
+
+        <section id="knowledge" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Knowledge base</div>
+            <h2 class="section-title">Guides and onboarding</h2>
+            <p>Onboarding videos, FAQ, and training docs.</p>
+            <ul class="list">
+              <li>Onboarding walkthrough</li>
+              <li>Brand messaging guide</li>
+              <li>Portal usage FAQ</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="files" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Files</div>
+            <h2 class="section-title">Uploads and deliverables</h2>
+            <p>Upload brand assets, briefs, and review files securely.</p>
+            <form class="form">
+              <input id="client-file-input" type="file" multiple>
+              <button class="btn btn-primary" type="button" id="client-file-upload">Add files</button>
+            </form>
+            <ul id="client-file-list" class="list"></ul>
+          </div>
+        </section>
+
+        <section id="contracts" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Contracts</div>
+            <h2 class="section-title">Agreements and approvals</h2>
+            <p>Review service agreements and sign project scopes.</p>
+            <div class="hero-actions">
+              <button id="client-contract-toggle" class="btn btn-ghost" type="button">Sign agreement</button>
+            </div>
+            <p id="client-contract-status" class="form-note">Status: Pending signature</p>
+          </div>
+        </section>
+
+        <section id="invoices" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Invoices</div>
+            <h2 class="section-title">Billing and payments</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Invoice</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-invoice-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="appointments" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Appointments</div>
+            <h2 class="section-title">Book a strategy call</h2>
+            <p>Pick a time with your project strategist.</p>
+            <form id="client-appointment-form" class="form">
+              <div class="form-row">
+                <input id="client-appointment-date" type="date" aria-label="Appointment date">
+                <input id="client-appointment-time" type="time" aria-label="Appointment time">
+              </div>
+              <input id="client-appointment-topic" type="text" placeholder="Topic" aria-label="Topic">
+              <button class="btn btn-primary" type="submit">Book appointment</button>
+            </form>
+            <ul id="client-appointment-list" class="list"></ul>
+          </div>
+        </section>
+
+        <section id="support" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Support</div>
+            <h2 class="section-title">Help and onboarding</h2>
+            <p>Access FAQs, onboarding videos, and open support tickets.</p>
+            <form id="client-ticket-form" class="form">
+              <div class="form-row">
+                <input id="client-ticket-subject" type="text" placeholder="Ticket subject" aria-label="Ticket subject">
+                <input id="client-ticket-priority" type="text" placeholder="Priority (Standard/Priority)" aria-label="Ticket priority">
+              </div>
+              <textarea id="client-ticket-message" placeholder="Describe the issue" aria-label="Ticket message"></textarea>
+              <button class="btn btn-ghost" type="submit">Open ticket</button>
+            </form>
+            <ul id="client-ticket-list" class="list"></ul>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>INKSAVVY</strong>
+        <p>Client portal dashboard.</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <p>support@inksavvy.example</p>
+      </div>
+      <div>
+        <strong>Security</strong>
+        <p>Encrypted uploads and audit logs.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/site.js"></script>
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>

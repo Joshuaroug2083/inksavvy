@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Client Portal - INKSAVVY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="INKSAVVY client portal login and registration.">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="index.html">INKSAVVY</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div id="primary-nav" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <div class="nav-item has-dropdown">
+            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="services-menu">Services</button>
+            <div id="services-menu" class="dropdown">
+              <a href="services.html#writing">Writing and Strategy</a>
+              <a href="services.html#branding">Brand Identity</a>
+              <a href="services.html#digital">Digital Products</a>
+              <a href="services.html#growth">Growth and Positioning</a>
+            </div>
+          </div>
+          <a href="work.html">Work</a>
+          <a href="pricing.html">Packages</a>
+          <a href="resources.html">Resources</a>
+          <a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="portal.html">Client Portal</a>
+            <a class="btn btn-primary" href="contact.html#contact-form">Get a Quote</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">Client portal</div>
+          <h1 class="hero-title">Secure access to projects, files, and approvals.</h1>
+          <p class="hero-sub">Login or create an account to access your client or staff dashboard.</p>
+        </div>
+        <div class="split-card">
+          <h3>Portal features</h3>
+          <ul class="list">
+            <li>Project timeline and milestones</li>
+            <li>Contracts, invoices, and payments</li>
+            <li>Secure file exchange and approvals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section">
+      <div class="grid-2">
+        <div id="login" class="card reveal">
+          <h3>Client login</h3>
+          <p>Access your projects, deliverables, and approvals.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="auth.html#login">Sign In</a>
+          </div>
+        </div>
+        <div id="signup" class="card reveal">
+          <h3>Create an account</h3>
+          <p>Register to start a new project or manage an ongoing engagement.</p>
+          <div class="hero-actions">
+            <a class="btn btn-ghost" href="auth.html#signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>INKSAVVY</strong>
+        <p>Writing-first branding and digital systems.</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <p>support@inksavvy.example</p>
+      </div>
+      <div>
+        <strong>Security</strong>
+        <p>Two-factor and secure uploads in the full build.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/site.js"></script>
+  <script src="./js/reveal.js"></script>
+</body>
+</html>

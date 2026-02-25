@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Staff Dashboard - INKSAVVY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="INKSAVVY staff dashboard.">
+</head>
+<body class="page" data-dashboard="staff">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="index.html">INKSAVVY</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div id="primary-nav" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="portal.html">Client Portal</a>
+          <a href="contact.html#contact-form">Support</a>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="auth.html#login">Switch Account</a>
+            <a class="btn btn-primary" href="services.html">New Assignment</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="section-tight">
+      <div class="eyebrow">Staff dashboard</div>
+      <h1 class="section-title">Welcome, Strategist.</h1>
+      <p class="section-sub">Manage assignments, deliverables, and timelines across client engagements.</p>
+    </section>
+
+    <div class="dashboard">
+      <aside class="sidebar">
+        <h4>Workspace</h4>
+        <a class="active" href="#overview">Overview</a>
+        <a href="#assignments">Assignments</a>
+        <a href="#deliverables">Deliverables</a>
+        <a href="#timesheets">Timesheets</a>
+        <a href="#availability">Availability</a>
+        <a href="#messages">Messages</a>
+        <a href="#profile">Profile</a>
+      </aside>
+
+      <div class="dashboard-main">
+        <section id="overview" class="section-tight">
+          <div class="stats">
+            <div class="stat-card">
+              <strong>Active projects</strong>
+              <span>3 projects assigned</span>
+            </div>
+            <div class="stat-card">
+              <strong>Tasks due</strong>
+              <span>2 deliverables this week</span>
+            </div>
+            <div class="stat-card">
+              <strong>Employment ID</strong>
+              <span>INK-S-2026-0042</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="assignments" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Assignments</div>
+            <h2 class="section-title">Current tasks</h2>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Project</th>
+                  <th>Task</th>
+                  <th>Due</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="staff-task-body"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="deliverables" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Deliverables</div>
+            <h2 class="section-title">Upload and approvals</h2>
+            <p>Submit drafts, upload files, and request client approvals.</p>
+            <form class="form">
+              <input id="staff-deliverable-input" type="file" multiple>
+              <button id="staff-deliverable-upload" class="btn btn-primary" type="button">Upload deliverable</button>
+            </form>
+            <ul id="staff-deliverable-list" class="list"></ul>
+          </div>
+        </section>
+
+        <section id="timesheets" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Timesheets</div>
+            <h2 class="section-title">Weekly activity</h2>
+            <p>Log hours and summarize weekly work.</p>
+            <form id="staff-timesheet-form" class="form">
+              <div class="form-row">
+                <input id="staff-timesheet-week" type="text" placeholder="Week of" aria-label="Week of">
+                <input id="staff-timesheet-hours" type="number" min="1" placeholder="Hours" aria-label="Hours">
+              </div>
+              <textarea id="staff-timesheet-note" placeholder="Summary of work" aria-label="Summary"></textarea>
+              <button class="btn btn-ghost" type="submit">Log hours</button>
+            </form>
+            <ul id="staff-timesheet-list" class="list"></ul>
+          </div>
+        </section>
+
+        <section id="availability" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Availability</div>
+            <h2 class="section-title">Set your working hours</h2>
+            <p>Update remote availability to align on scheduling and assignments.</p>
+            <form id="staff-availability-form" class="form">
+              <div class="form-row">
+                <input id="staff-availability-days" type="text" placeholder="Available days (Mon-Fri)" aria-label="Available days">
+                <input id="staff-availability-hours" type="text" placeholder="Hours (9am-6pm)" aria-label="Available hours">
+              </div>
+              <button class="btn btn-ghost" type="submit">Save availability</button>
+            </form>
+            <p id="staff-availability-status" class="form-note"></p>
+          </div>
+        </section>
+
+        <section id="messages" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Messages</div>
+            <h2 class="section-title">Internal communication</h2>
+            <p>Coordinate with PMs and share updates.</p>
+            <div id="staff-message-feed" class="message-feed"></div>
+            <form id="staff-message-form" class="form">
+              <div class="form-row">
+                <input id="staff-message-sender" type="text" placeholder="Your name" aria-label="Your name">
+                <input id="staff-message-project" type="text" placeholder="Project" aria-label="Project">
+              </div>
+              <textarea id="staff-message-text" placeholder="Write a message" aria-label="Message"></textarea>
+              <button class="btn btn-ghost" type="submit">Send update</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="profile" class="section-tight">
+          <div class="section-card">
+            <div class="eyebrow">Profile</div>
+            <h2 class="section-title">Account settings</h2>
+            <p>Update availability, portfolio links, and notification settings.</p>
+            <form id="staff-profile-form" class="form">
+              <div class="form-row">
+                <input id="staff-profile-portfolio" type="text" placeholder="Portfolio link" aria-label="Portfolio link">
+                <input id="staff-profile-role" type="text" placeholder="Role (Brand Strategist)" aria-label="Role">
+              </div>
+              <textarea id="staff-profile-bio" placeholder="Short bio" aria-label="Bio"></textarea>
+              <button class="btn btn-ghost" type="submit">Save profile</button>
+            </form>
+            <p id="staff-profile-status" class="form-note"></p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>INKSAVVY</strong>
+        <p>Staff portal dashboard.</p>
+      </div>
+      <div>
+        <strong>Operations</strong>
+        <p>ops@inksavvy.example</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <p>support@inksavvy.example</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/site.js"></script>
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Login / Sign Up - INKSAVVY</title>
+  <link rel="stylesheet" href="./styles.css">
+  <meta name="description" content="INKSAVVY client and staff authentication.">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container header-row">
+      <a class="logo" href="index.html">INKSAVVY</a>
+      <nav class="nav" role="navigation" aria-label="Main navigation">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+          <span class="hamburger" aria-hidden="true"></span>
+          <span class="sr-only">Menu</span>
+        </button>
+        <div id="primary-nav" class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <div class="nav-item has-dropdown">
+            <button class="nav-link dropdown-toggle" aria-expanded="false" aria-controls="services-menu">Services</button>
+            <div id="services-menu" class="dropdown">
+              <a href="services.html#writing">Writing and Strategy</a>
+              <a href="services.html#branding">Brand Identity</a>
+              <a href="services.html#digital">Digital Products</a>
+              <a href="services.html#growth">Growth and Positioning</a>
+            </div>
+          </div>
+          <a href="work.html">Work</a>
+          <a href="pricing.html">Packages</a>
+          <a href="resources.html">Resources</a>
+          <a href="careers.html">Careers</a>
+          <a href="contact.html">Contact</a>
+          <div class="nav-actions">
+            <a class="btn btn-ghost" href="portal.html">Client Portal</a>
+            <a class="btn btn-primary" href="contact.html#contact-form">Get a Quote</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container split">
+        <div>
+          <div class="eyebrow">Access</div>
+          <h1 class="hero-title">Login or create an account.</h1>
+          <p class="hero-sub">Choose whether you are a client or staff member. Staff accounts require a valid Employment ID.</p>
+          <div class="auth-nav">
+            <a class="active" href="#login">Login</a>
+            <a href="#signup">Sign up</a>
+          </div>
+        </div>
+        <div class="split-card">
+          <h3>Security first</h3>
+          <p>Authentication, two-factor, and secure file handling are enabled in the full build.</p>
+          <div class="hero-actions">
+            <span class="pill">Email verification</span>
+            <span class="pill">Encrypted uploads</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="login" class="container section">
+      <div class="section-header">
+        <div class="eyebrow">Login</div>
+        <h2 class="section-title">Select your account type.</h2>
+        <p class="section-sub">Login as a client or staff member to access your dashboard.</p>
+      </div>
+      <div class="auth-panels single">
+        <div class="auth-card" data-auth-form="login">
+          <div class="role-switch" role="tablist" aria-label="Login role selection">
+            <button class="role-btn active" type="button" data-role="client">Client</button>
+            <button class="role-btn" type="button" data-role="staff">Staff</button>
+          </div>
+          <form id="auth-login-form" class="form">
+            <input id="login-email" type="email" placeholder="Email address" aria-label="Email address" data-role="client staff">
+            <input id="login-password" type="password" placeholder="Password" aria-label="Password" data-role="client staff">
+            <input id="login-employment-id" type="text" placeholder="Employment ID (INK-S-2026-0042)" aria-label="Employment ID" data-role="staff">
+            <button class="btn btn-primary" type="button" data-auth-submit>Login as Client</button>
+            <div class="form-note" data-role="staff">Employment ID is required for staff access.</div>
+            <div class="form-note" data-role="client">Forgot password? Use account recovery in the full build.</div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="signup" class="container section">
+      <div class="section-header">
+        <div class="eyebrow">Sign up</div>
+        <h2 class="section-title">Create a new account.</h2>
+        <p class="section-sub">Clients can register to start a project. Staff must provide a valid Employment ID.</p>
+      </div>
+      <div class="auth-panels single">
+        <div class="auth-card" data-auth-form="signup">
+          <div class="role-switch" role="tablist" aria-label="Sign up role selection">
+            <button class="role-btn active" type="button" data-role="client">Client</button>
+            <button class="role-btn" type="button" data-role="staff">Staff</button>
+          </div>
+          <form id="auth-signup-form" class="form">
+            <div class="form-row">
+              <input id="signup-name" type="text" placeholder="Full name" aria-label="Full name" data-role="client staff">
+              <input id="signup-company" type="text" placeholder="Company" aria-label="Company" data-role="client">
+              <input id="signup-staff-email" type="email" placeholder="Work email" aria-label="Work email" data-role="staff">
+            </div>
+            <input id="signup-client-email" type="email" placeholder="Email address" aria-label="Email address" data-role="client">
+            <input id="signup-password" type="password" placeholder="Create password" aria-label="Create password" data-role="client staff">
+            <input id="signup-portfolio" type="text" placeholder="Portfolio link" aria-label="Portfolio link" data-role="staff">
+            <label class="form-note" data-role="client staff">
+              <input type="checkbox"> I agree to the terms and privacy policy.
+            </label>
+            <button class="btn btn-primary" type="button" data-auth-submit>Create Client Account</button>
+            <div class="form-note" data-role="staff">Staff applications are reviewed. Approved applicants receive an Employment ID and temporary login details by email.</div>
+            <p id="staff-application-status" class="form-note" data-role="staff"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong>INKSAVVY</strong>
+        <p>Writing-first branding and digital systems.</p>
+      </div>
+      <div>
+        <strong>Support</strong>
+        <p>support@inksavvy.example</p>
+      </div>
+      <div>
+        <strong>Security</strong>
+        <p>2FA and account recovery in full build.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./js/site.js"></script>
+  <script src="./js/reveal.js"></script>
+</body>
+</html>
