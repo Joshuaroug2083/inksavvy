@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Login / Sign Up - INKSAVVY</title>
   <link rel="stylesheet" href="./styles.css">
   <meta name="description" content="INKSAVVY client and staff authentication.">
@@ -79,7 +80,7 @@
           <form id="auth-login-form" class="form">
             <input id="login-email" type="email" placeholder="Email address" aria-label="Email address" data-role="client staff">
             <input id="login-password" type="password" placeholder="Password" aria-label="Password" data-role="client staff">
-            <input id="login-employment-id" type="text" placeholder="Employment ID (INK-S-2026-0042)" aria-label="Employment ID" data-role="staff">
+            <input id="login-employment-id" type="text" placeholder="Employment ID (INK-S-20**-)" aria-label="Employment ID" data-role="staff">
             <button class="btn btn-primary" type="button" data-auth-submit>Login as Client</button>
             <div class="form-note" data-role="staff">Employment ID is required for staff access.</div>
             <div class="form-note" data-role="client">Forgot password? Use account recovery in the full build.</div>
@@ -106,7 +107,61 @@
               <input id="signup-company" type="text" placeholder="Company" aria-label="Company" data-role="client">
               <input id="signup-staff-email" type="email" placeholder="Work email" aria-label="Work email" data-role="staff">
             </div>
-            <input id="signup-client-email" type="email" placeholder="Email address" aria-label="Email address" data-role="client">
+            <div class="form-row">
+              <input id="signup-client-email" type="email" placeholder="Email address" aria-label="Email address" data-role="client">
+              <input id="signup-phone" type="tel" placeholder="Phone number" aria-label="Phone number" data-role="client">
+            </div>
+            <div class="form-row">
+              <input id="signup-title" type="text" placeholder="Job title" aria-label="Job title" data-role="client">
+              <input id="signup-website" type="text" placeholder="Company website" aria-label="Company website" data-role="client">
+            </div>
+            <div class="form-row">
+              <input id="signup-country" type="text" placeholder="Country" aria-label="Country" data-role="client">
+              <select id="signup-industry" aria-label="Industry" data-role="client">
+                <option value="">Industry</option>
+                <option>Technology / SaaS</option>
+                <option>Fintech</option>
+                <option>Health</option>
+                <option>Education</option>
+                <option>Consulting / Agency</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <select id="signup-company-size" aria-label="Company size" data-role="client">
+                <option value="">Company size</option>
+                <option>1-10</option>
+                <option>11-50</option>
+                <option>51-200</option>
+                <option>201-500</option>
+                <option>500+</option>
+              </select>
+              <select id="signup-project-type" aria-label="Primary need" data-role="client">
+                <option value="">Primary need</option>
+                <option>Brand strategy</option>
+                <option>Business writing</option>
+                <option>Digital product</option>
+                <option>Growth and positioning</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <select id="signup-budget" aria-label="Budget range" data-role="client">
+                <option value="">Budget range</option>
+                <option>$2k-$5k</option>
+                <option>$5k-$15k</option>
+                <option>$15k-$50k</option>
+                <option>$50k+</option>
+              </select>
+              <select id="signup-timeline" aria-label="Timeline" data-role="client">
+                <option value="">Timeline</option>
+                <option>ASAP</option>
+                <option>2-4 weeks</option>
+                <option>1-3 months</option>
+                <option>3+ months</option>
+              </select>
+            </div>
+            <textarea id="signup-brief" placeholder="Briefly describe your goals" aria-label="Project goals" data-role="client"></textarea>
+            <input id="signup-referral" type="text" placeholder="How did you hear about us?" aria-label="Referral source" data-role="client">
             <input id="signup-password" type="password" placeholder="Create password" aria-label="Create password" data-role="client staff">
             <input id="signup-portfolio" type="text" placeholder="Portfolio link" aria-label="Portfolio link" data-role="staff">
             <label class="form-note" data-role="client staff">
