@@ -78,6 +78,11 @@
             <button class="role-btn" type="button" data-role="staff">Staff</button>
           </div>
           <form id="auth-login-form" class="form">
+            <button class="btn btn-google" type="button" id="google-login-btn">
+              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18">
+              Continue with Google
+            </button>
+            <div class="form-divider">or</div>
             <input id="login-email" type="email" placeholder="Email address" aria-label="Email address" data-role="client staff">
             <input id="login-password" type="password" placeholder="Password" aria-label="Password" data-role="client staff">
             <input id="login-employment-id" type="text" placeholder="Employment ID (INK-S-20**-)" aria-label="Employment ID" data-role="staff">
@@ -102,6 +107,11 @@
             <button class="role-btn" type="button" data-role="staff">Staff</button>
           </div>
           <form id="auth-signup-form" class="form">
+            <button class="btn btn-google" type="button" id="google-signup-btn">
+              <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" width="18">
+              Sign up with Google
+            </button>
+            <div class="form-divider">or</div>
             <div class="form-row">
               <input id="signup-name" type="text" placeholder="Full name" aria-label="Full name" data-role="client staff">
               <input id="signup-company" type="text" placeholder="Company" aria-label="Company" data-role="client">
@@ -193,6 +203,10 @@
     </div>
   </footer>
 
+  <script type="module">
+    import { supabaseClient } from './supabase.js';
+    window.supabaseClient = supabaseClient;
+  </script>
   <script src="./js/site.js"></script>
   <script src="./js/reveal.js"></script>
 </body>

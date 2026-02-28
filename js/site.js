@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (submit) {
-      submit.addEventListener('click', () => {
+      submit.addEventListener('click', async () => {
         const role = card.dataset.currentRole || 'client';
         const mode = card.getAttribute('data-auth-form');
         if (mode === 'signup' && role === 'staff') {
@@ -132,6 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
             portfolioReviewed: false,
           });
           writeShared('staffApplications', applications);
+          // Push to Supabase if available
+          try {
+            if (window.supabaseClient) {
+              await window.supabaseClient.from('staff_applications').insert({
+                name: name?.value || null,
+                email: email.value.trim(),
+                portfolio: portfolio?.value || null,
+                status: 'Pending',
+              });
+            }
+          } catch (err) {
+            console.warn('Supabase staff application insert failed', err.message);
+          }
           if (statusEl) {
             statusEl.textContent = 'Application submitted. We will review and email your Employment ID.';
           }
@@ -143,8 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (mode === 'login' && role === 'staff') {
           const staffId = document.getElementById('login-employment-id');
-          const staffDirectory = readShared('staffDirectory', []);
           const idValue = staffId?.value?.trim();
+          const staffDirectory = readShared('staffDirectory', []);
           const exists = staffDirectory.find((s) => s.employmentId === idValue);
           if (!exists) {
             alert('Employment ID not found. Please wait for approval or contact support.');
@@ -152,6 +165,59 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           if (idValue) {
             writeShared('currentStaffId', idValue);
+          }
+        }
+
+        if (mode === 'signup' && role === 'client') {
+          const email = document.getElementById('signup-client-email')?.value?.trim();
+          const password = document.getElementById('signup-password')?.value;
+          const payload = {
+            name: document.getElementById('signup-name')?.value || null,
+            company: document.getElementById('signup-company')?.value || null,
+            phone: document.getElementById('signup-phone')?.value || null,
+            title: document.getElementById('signup-title')?.value || null,
+            website: document.getElementById('signup-website')?.value || null,
+            country: document.getElementById('signup-country')?.value || null,
+            industry: document.getElementById('signup-industry')?.value || null,
+            company_size: document.getElementById('signup-company-size')?.value || null,
+            project_type: document.getElementById('signup-project-type')?.value || null,
+            budget: document.getElementById('signup-budget')?.value || null,
+            timeline: document.getElementById('signup-timeline')?.value || null,
+            brief: document.getElementById('signup-brief')?.value || null,
+            referral: document.getElementById('signup-referral')?.value || null,
+          };
+          try {
+            if (window.supabaseClient && email && password) {
+              const { data, error } = await window.supabaseClient.auth.signUp({
+                email,
+                password,
+                options: { data: payload },
+              });
+              if (error) throw error;
+              await window.supabaseClient.from('client_profiles').upsert({
+                user_id: data.user?.id,
+                email,
+                ...payload,
+              });
+            }
+          } catch (err) {
+            console.warn('Supabase client signup failed', err.message);
+          }
+        }
+
+        if (mode === 'login' && role === 'client') {
+          const email = document.getElementById('login-email')?.value?.trim();
+          const password = document.getElementById('login-password')?.value;
+          if (window.supabaseClient && email && password) {
+            try {
+              const { error } = await window.supabaseClient.auth.signInWithPassword({ email, password });
+              if (error) {
+                alert('Login failed: ' + error.message);
+                return;
+              }
+            } catch (err) {
+              console.warn('Supabase login failed', err.message);
+            }
           }
         }
 

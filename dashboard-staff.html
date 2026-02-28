@@ -185,6 +185,10 @@
     </div>
   </footer>
 
+  <script type="module">
+    import { supabaseClient } from './supabase.js';
+    window.supabaseClient = supabaseClient;
+  </script>
   <script src="./js/site.js"></script>
   <script src="./js/dashboard.js"></script>
 </body>

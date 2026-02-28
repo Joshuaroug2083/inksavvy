@@ -36,6 +36,7 @@
   const saveShared = (name, value) => localStorage.setItem(sharedKey(name), JSON.stringify(value));
 
   if (dashboard === 'client') {
+    const supabase = window.supabaseClient;
     const messages = init('messages', [
       { sender: 'INKSAVVY', project: 'Brand clarity audit', text: 'Messaging brief is ready for review.', time: nowStamp() },
     ]);
@@ -200,7 +201,7 @@
 
     const messageForm = document.getElementById('client-message-form');
     if (messageForm) {
-      messageForm.addEventListener('submit', (e) => {
+      messageForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const sender = document.getElementById('client-message-sender');
         const project = document.getElementById('client-message-project');
@@ -213,6 +214,17 @@
           time: nowStamp(),
         });
         save('messages', messages);
+        if (supabase) {
+          try {
+            await supabase.from('messages').insert({
+              sender: sender.value || 'Client',
+              project: project.value || 'General',
+              body: text.value.trim(),
+            });
+          } catch (err) {
+            console.warn('Supabase message insert failed', err.message);
+          }
+        }
         text.value = '';
         renderMessages();
       });
@@ -275,7 +287,7 @@
 
     const ticketForm = document.getElementById('client-ticket-form');
     if (ticketForm) {
-      ticketForm.addEventListener('submit', (e) => {
+      ticketForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const subject = document.getElementById('client-ticket-subject');
         const priority = document.getElementById('client-ticket-priority');
@@ -288,6 +300,18 @@
           message: message.value.trim(),
         });
         save('tickets', tickets);
+        if (supabase) {
+          try {
+            await supabase.from('tickets').insert({
+              subject: subject.value.trim(),
+              priority: priority.value || 'Standard',
+              status: 'Open',
+              body: message.value.trim(),
+            });
+          } catch (err) {
+            console.warn('Supabase ticket insert failed', err.message);
+          }
+        }
         ticketForm.reset();
         renderTickets();
       });
@@ -332,9 +356,10 @@
       { project: 'Brand clarity audit', task: 'Draft positioning brief', due: 'Mar 10', status: 'Pending' },
       { project: 'Website and portal build', task: 'Review tone guidelines', due: 'Mar 12', status: 'Pending' },
     ]);
-    const sharedAssignments = initShared('assignments', []);
+    let sharedAssignments = initShared('assignments', []);
     const staffDirectory = initShared('staffDirectory', []);
     const currentStaffId = initShared('currentStaffId', '');
+    const supabase = window.supabaseClient;
     let staffId = currentStaffId;
     if (!staffId && staffDirectory.length) {
       staffId = staffDirectory[0]?.employmentId || '';
@@ -347,12 +372,49 @@
     const availability = init('availability', { days: 'Mon-Fri', hours: '9am-6pm' });
     const profile = init('profile', { portfolio: '', role: 'Brand Strategist', bio: '' });
 
+    const syncStaffAssignments = async () => {
+      if (!supabase) return;
+      try {
+        const { data, error } = await supabase
+          .from('assignments')
+          .select('*')
+          .eq('staff_id', staffId)
+          .order('created_at', { ascending: false });
+        if (error) throw error;
+        if (Array.isArray(data)) {
+          sharedAssignments = data.map((row) => ({
+            id: row.id,
+            project: row.project,
+            role: row.role,
+            staffId: row.staff_id,
+            staffName: row.staff_name,
+            due: row.due,
+            status: row.status || 'Assigned',
+          }));
+          saveShared('assignments', sharedAssignments);
+        }
+      } catch (err) {
+        console.warn('Supabase staff assignments fetch failed', err.message);
+      }
+    };
+
+    const updateAssignmentStatus = async (assignmentId, status) => {
+      if (!supabase || !assignmentId) return;
+      try {
+        const { error } = await supabase.from('assignments').update({ status }).eq('id', assignmentId);
+        if (error) throw error;
+      } catch (err) {
+        console.warn('Supabase assignment status update failed', err.message);
+      }
+    };
+
     const renderTasks = () => {
       const body = document.getElementById('staff-task-body');
       if (!body) return;
       body.innerHTML = '';
       const merged = [
         ...sharedAssignments.map((assign) => ({
+          id: assign.id,
           project: assign.project,
           task: assign.role || 'Assignment',
           due: assign.due || '-',
@@ -381,9 +443,12 @@
         accept.disabled = task.status !== 'Pending' && task.status !== 'Assigned';
         accept.addEventListener('click', () => {
           if (task.source === 'assignment') {
-            const match = sharedAssignments.find((a) => a.project === task.project && a.staffId === task.staffId);
-            if (match) match.status = 'In progress';
-            saveShared('assignments', sharedAssignments);
+            const match = sharedAssignments.find((a) => a.id === task.id);
+            if (match) {
+              match.status = 'In progress';
+              saveShared('assignments', sharedAssignments);
+              updateAssignmentStatus(match.id, 'In progress');
+            }
           } else {
             tasks[idx].status = 'In progress';
             save('tasks', tasks);
@@ -396,9 +461,12 @@
         complete.disabled = task.status !== 'In progress';
         complete.addEventListener('click', () => {
           if (task.source === 'assignment') {
-            const match = sharedAssignments.find((a) => a.project === task.project && a.staffId === task.staffId);
-            if (match) match.status = 'Completed';
-            saveShared('assignments', sharedAssignments);
+            const match = sharedAssignments.find((a) => a.id === task.id);
+            if (match) {
+              match.status = 'Completed';
+              saveShared('assignments', sharedAssignments);
+              updateAssignmentStatus(match.id, 'Completed');
+            }
           } else {
             tasks[idx].status = 'Completed';
             save('tasks', tasks);
@@ -411,9 +479,12 @@
         reassign.disabled = task.status === 'Completed';
         reassign.addEventListener('click', () => {
           if (task.source === 'assignment') {
-            const match = sharedAssignments.find((a) => a.project === task.project && a.staffId === task.staffId);
-            if (match) match.status = 'Reassign requested';
-            saveShared('assignments', sharedAssignments);
+            const match = sharedAssignments.find((a) => a.id === task.id);
+            if (match) {
+              match.status = 'Reassign requested';
+              saveShared('assignments', sharedAssignments);
+              updateAssignmentStatus(match.id, 'Reassign requested');
+            }
           } else {
             tasks[idx].status = 'Reassign requested';
             save('tasks', tasks);
@@ -482,12 +553,15 @@
       }
     };
 
-    renderTasks();
-    renderDeliverables();
-    renderTimesheets();
-    renderMessages();
-    renderAvailability();
-    renderProfile();
+    (async () => {
+      await syncStaffAssignments();
+      renderTasks();
+      renderDeliverables();
+      renderTimesheets();
+      renderMessages();
+      renderAvailability();
+      renderProfile();
+    })();
 
     const deliverableBtn = document.getElementById('staff-deliverable-upload');
     const deliverableInput = document.getElementById('staff-deliverable-input');
@@ -576,7 +650,78 @@
     const applications = initShared('staffApplications', []);
     const staffDirectory = initShared('staffDirectory', []);
     const emailLog = initShared('emailLog', []);
-    const assignments = initShared('assignments', []);
+    let assignments = initShared('assignments', []);
+
+    const supabase = window.supabaseClient;
+
+    const syncApplicationsFromSupabase = async () => {
+      if (!supabase) return;
+      try {
+        const { data, error } = await supabase.from('staff_applications').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+        if (Array.isArray(data)) {
+          const mapped = data.map((row) => ({
+            id: row.id,
+            name: row.name || 'Staff Applicant',
+            email: row.email,
+            portfolio: row.portfolio,
+            status: row.status || 'Pending',
+            employmentId: row.employment_id,
+            tempPassword: row.temp_password,
+            submittedAt: row.created_at,
+            portfolioReviewed: row.portfolio_reviewed || false,
+          }));
+          saveShared('staffApplications', mapped);
+          applications.splice(0, applications.length, ...mapped);
+        }
+      } catch (err) {
+        console.warn('Supabase applications fetch failed', err.message);
+      }
+    };
+
+    const syncAssignmentsFromSupabase = async () => {
+      if (!supabase) return;
+      try {
+        const { data, error } = await supabase.from('assignments').select('*').order('created_at', { ascending: false });
+        if (error) throw error;
+        if (Array.isArray(data)) {
+          assignments = data.map((row) => ({
+            id: row.id,
+            project: row.project,
+            role: row.role,
+            staffId: row.staff_id,
+            staffName: row.staff_name,
+            due: row.due,
+            status: row.status || 'Assigned',
+          }));
+          saveShared('assignments', assignments);
+        }
+      } catch (err) {
+        console.warn('Supabase assignments fetch failed', err.message);
+      }
+    };
+
+    const insertAssignmentSupabase = async (payload) => {
+      if (!supabase) return null;
+      try {
+        const { data, error } = await supabase.from('assignments').insert(payload).select().single();
+        if (error) throw error;
+        return data;
+      } catch (err) {
+        console.warn('Supabase assignment insert failed', err.message);
+        return null;
+      }
+    };
+
+    const updateAssignmentSupabase = async (id, status) => {
+      if (!supabase || !id) return;
+      try {
+        const { error } = await supabase.from('assignments').update({ status }).eq('id', id);
+        if (error) throw error;
+      } catch (err) {
+        console.warn('Supabase assignment update failed', err.message);
+      }
+    };
 
     const generateEmploymentId = () => {
       const year = new Date().getFullYear();
@@ -778,7 +923,10 @@
       renderEmails();
     };
 
-    renderAll();
+    (async () => {
+      await syncAssignmentsFromSupabase();
+      renderAll();
+    })();
 
     const assignmentForm = document.getElementById('admin-assignment-form');
     if (assignmentForm) {
@@ -790,15 +938,34 @@
         const due = document.getElementById('admin-assignment-due');
         if (!staffSelect || !staffSelect.value || !project?.value) return;
         const staff = staffDirectory.find((s) => s.employmentId === staffSelect.value);
-        assignments.unshift({
+        const newAssignment = {
+          id: `A-${Date.now()}`,
           project: project.value.trim(),
           role: role?.value || 'Staff',
           staffId: staffSelect.value,
           staffName: staff?.name || staffSelect.value,
           due: due?.value || '',
           status: 'Assigned',
-        });
+        };
+        assignments.unshift(newAssignment);
         saveShared('assignments', assignments);
+        insertAssignmentSupabase({
+          id: newAssignment.id,
+          project: newAssignment.project,
+          role: newAssignment.role,
+          staff_id: newAssignment.staffId,
+          staff_name: newAssignment.staffName,
+          due: newAssignment.due,
+          status: newAssignment.status,
+        }).then((created) => {
+          if (created?.id) {
+            assignments = assignments.map((a) =>
+              a.id === newAssignment.id ? { ...a, id: created.id } : a
+            );
+            saveShared('assignments', assignments);
+            renderAssignments();
+          }
+        });
         assignmentForm.reset();
         renderAssignments();
       });
