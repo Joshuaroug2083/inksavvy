@@ -5,7 +5,7 @@ async function handleGoogleLogin() {
   const { error } = await supabaseClient.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: window.location.origin + '/client-dashboard.html'
+      redirectTo: 'https://joshuaroug2083.github.io/inksavvy/client-dashboard.html'
     }
   })
 
